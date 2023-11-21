@@ -1,24 +1,28 @@
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.util.Scanner;
 
 public class Slip7Q2 {
-    public static void main(String[] args) throws IOException {
-        RandomAccessFile file = new RandomAccessFile("text.txt", "r");
-        StringBuffer str = new StringBuffer();
-        long curr = file.getFilePointer();
-        file.seek(0);
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter file name :");
+        String fname = sc.nextLine();
+        sc.close();
         
-        while(file.getFilePointer() < file.length()) {
-            String line = file.readLine();
+        BufferedReader r = new BufferedReader(new FileReader(fname));
+        
+        StringBuilder str = new StringBuilder();
+        String line;
+        while((line = r.readLine()) != null) {
             str.append(line.toLowerCase()).append("\n");
         }
         
         str.reverse();
         
-        System.out.println("File content in reverse order :");
+        System.out.println("File contents in reverse order : ");
         System.out.println(str);
-        
-        file.seek(curr);
     }
 }
