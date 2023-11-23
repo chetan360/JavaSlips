@@ -1,28 +1,25 @@
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Slip13Q1 {
-    public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter file name :");
-        String fname = sc.nextLine();
-        sc.close();
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        String fileName = args[0];
         
-        BufferedReader r = new BufferedReader(new FileReader(fname));
+        BufferedReader b = new BufferedReader(new FileReader(fileName));
         
         String[] words;
+        int wCnt=0, lCnt=0;
         String line;
-        int lCount=0, wCount=0;
-        while((line = r.readLine()) != null) {
-            lCount++;
+        while((line = b.readLine()) != null) {
+            lCnt++;
             words = line.split("\\s");
-            wCount += words.length;
+            wCnt += words.length;
         }
         
-        System.out.println("No. of Lines = " + lCount);
-        System.out.println("No. of Words = " + wCount);
+        System.out.println("No. of lines = " + lCnt);
+        System.out.println("No. of Words = " + wCnt);
     }
 }
