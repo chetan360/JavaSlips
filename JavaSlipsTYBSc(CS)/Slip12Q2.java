@@ -8,8 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
-
 class Calculator implements ActionListener {
     private JFrame frame;
     private JButton[] digitBtns;
